@@ -41,4 +41,5 @@ dependencies {
     testImplementation rootProject.ext.dependencies.junit
     implementation rootProject.ext.dependencies.recyclerview
     implementation rootProject.ext.dependencies.glide
+    annotationProcessor rootProject.ext.dependencies.glidecompiler
 }

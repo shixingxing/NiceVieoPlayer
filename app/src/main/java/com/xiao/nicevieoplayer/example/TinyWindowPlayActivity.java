@@ -1,16 +1,16 @@
 package com.xiao.nicevieoplayer.example;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 import com.xiao.nicevieoplayer.R;
+import com.xiao.nicevieoplayer.example.util.GlideApp;
 
 public class TinyWindowPlayActivity extends AppCompatActivity {
 
@@ -32,10 +32,10 @@ public class TinyWindowPlayActivity extends AppCompatActivity {
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("办公室小野开番外了，居然在办公室开澡堂！老板还点赞？");
         controller.setLenght(98000);
-        Glide.with(this)
+        GlideApp.with(this)
                 .load("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg")
                 .placeholder(R.drawable.img_default)
-                .crossFade()
+                .transition(new DrawableTransitionOptions().crossFade(500))
                 .into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
     }

@@ -3,12 +3,13 @@ package com.xiao.nicevieoplayer.example;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.xiao.nicevideoplayer.Clarity;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 import com.xiao.nicevieoplayer.R;
+import com.xiao.nicevieoplayer.example.util.GlideApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +32,10 @@ public class ChangeClarityActivity extends AppCompatActivity {
         controller.setTitle("Beautiful China...");
         controller.setLenght(117000);
         controller.setClarity(getClarites(), 0);
-        Glide.with(this)
+        GlideApp.with(this)
                 .load("http://imgsrc.baidu.com/image/c0%3Dshijue%2C0%2C0%2C245%2C40/sign=304dee3ab299a9012f38537575fc600e/91529822720e0cf3f8b77cd50046f21fbe09aa5f.jpg")
                 .placeholder(R.drawable.img_default)
-                .crossFade()
+                .transition(new DrawableTransitionOptions().crossFade(500))
                 .into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
     }

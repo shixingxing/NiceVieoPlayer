@@ -4,11 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 import com.xiao.nicevieoplayer.R;
 import com.xiao.nicevieoplayer.example.bean.Video;
+import com.xiao.nicevieoplayer.example.util.GlideApp;
 
 /**
  * Created by XiaoJianjun on 2017/5/21.
@@ -37,10 +38,10 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
     public void bindData(Video video) {
         mController.setTitle(video.getTitle());
         mController.setLenght(video.getLength());
-        Glide.with(itemView.getContext())
+        GlideApp.with(itemView.getContext())
                 .load(video.getImageUrl())
                 .placeholder(R.drawable.img_default)
-                .crossFade()
+                .transition(new DrawableTransitionOptions().crossFade(500))
                 .into(mController.imageView());
         mVideoPlayer.setUp(video.getVideoUrl(), null);
     }
